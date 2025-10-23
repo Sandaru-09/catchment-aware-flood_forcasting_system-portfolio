@@ -56,16 +56,18 @@ const Navigation = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative group ${
                     activeSection === item.id
                       ? 'text-[#54416d]'
-                      : 'text-gray-700 hover:text-[#75b4e3] hover:bg-gray-100'
+                      : 'text-gray-700 hover:text-[#54416d] '
                   }`}
                 >
                   {item.label}
-                  {activeSection === item.id && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#54416d] transform scale-x-100 transition-transform duration-300 ease-out"></div>
-                  )}
+                  <div className={`absolute bottom-0 left-0 right-0 h-0.5 transition-transform duration-300 ease-in-out ${
+                    activeSection === item.id 
+                      ? 'bg-[#54416d] transform scale-x-100' 
+                      : 'bg-[#54416d] transform scale-x-0 group-hover:scale-x-100'
+                  }`}></div>
                 </button>
               ))}
             </div>
