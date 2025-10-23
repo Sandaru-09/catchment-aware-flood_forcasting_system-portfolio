@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -9,8 +11,22 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#75b4e3] to-[#54416d] text-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/jonathan-kemper-KbI5cMohRlo-unsplash.jpg"
+          alt="Flood warning scene with submerged signs and city skyline"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Overlay for better text readability */}
+        
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
           Catchment-Aware Flood Forecasting System
         </h1>

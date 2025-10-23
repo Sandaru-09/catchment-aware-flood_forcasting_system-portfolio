@@ -44,7 +44,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/25 backdrop-blur-md shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
@@ -56,13 +56,16 @@ const Navigation = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative ${
                     activeSection === item.id
-                      ? 'text-[#75b4e3] bg-[#75b4e3]/10'
+                      ? 'text-[#54416d]'
                       : 'text-gray-700 hover:text-[#75b4e3] hover:bg-gray-100'
                   }`}
                 >
                   {item.label}
+                  {activeSection === item.id && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#54416d] transform scale-x-100 transition-transform duration-300 ease-out"></div>
+                  )}
                 </button>
               ))}
             </div>
