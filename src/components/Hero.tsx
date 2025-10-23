@@ -35,15 +35,10 @@ const Hero = () => {
           using catchment-specific models and meteorological data
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            onClick={() => scrollToSection('project-scope')}
-            className="px-8 py-3 bg-white text-[#54416d] rounded-full font-semibold hover:bg-gray-100 transition-colors"
-          >
-            Learn More
-          </button>
+          
           <button
             onClick={() => scrollToSection('downloads')}
-            className="px-8 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-[#54416d] transition-colors"
+            className="px-8 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-[#54416d] hover:text-white transition-colors"
           >
             View Research
           </button>
