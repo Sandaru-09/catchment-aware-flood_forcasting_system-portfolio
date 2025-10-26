@@ -1,14 +1,15 @@
 'use client';
 
+import { useCallback } from 'react';
 import Image from 'next/image';
 
 const Hero = () => {
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -22,7 +23,7 @@ const Hero = () => {
           priority
         />
         {/* Overlay for better text readability */}
-        
+        <div className="absolute inset-0 bg-black/50"></div>
       </div>
       
       {/* Content */}
@@ -38,6 +39,7 @@ const Hero = () => {
           
           <button
             onClick={() => scrollToSection('downloads')}
+            aria-label="Navigate to downloads section"
             className="px-8 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-[#54416d] hover:text-white transition-colors"
           >
             View Research

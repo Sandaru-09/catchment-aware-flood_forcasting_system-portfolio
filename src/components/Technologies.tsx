@@ -1,7 +1,7 @@
 'use client';
 
 import { 
-  FaPython, FaReact, FaAws, FaLock, FaGithub 
+  FaPython, FaReact, FaAws, FaLock, FaGithub, FaRobot, FaCloud, FaMobileAlt
 } from "react-icons/fa";
 import { 
   SiTensorflow, SiGooglecloud, SiGooglemaps, SiMqtt, SiGooglecolab, SiJupyter 
@@ -61,17 +61,23 @@ const Technologies = () => {
           <h3 className="text-2xl font-semibold mb-6 text-center">Technology Highlights</h3>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-4xl mb-4">🤖</div>
+              <div className="flex justify-center mb-4">
+                <FaRobot className="text-4xl" />
+              </div>
               <h4 className="text-lg font-semibold mb-2">Machine Learning</h4>
               <p className="text-blue-100">Advanced ML algorithms for pattern recognition and prediction</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-4">☁️</div>
+              <div className="flex justify-center mb-4">
+                <FaCloud className="text-4xl" />
+              </div>
               <h4 className="text-lg font-semibold mb-2">Cloud Computing</h4>
               <p className="text-blue-100">Scalable cloud infrastructure for real-time processing</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-4">📱</div>
+              <div className="flex justify-center mb-4">
+                <FaMobileAlt className="text-4xl" />
+              </div>
               <h4 className="text-lg font-semibold mb-2">Modern UI/UX</h4>
               <p className="text-blue-100">Responsive web and mobile interfaces for all users</p>
             </div>

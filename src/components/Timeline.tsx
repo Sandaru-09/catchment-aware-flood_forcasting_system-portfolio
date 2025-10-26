@@ -34,29 +34,29 @@ const Timeline = () => {
       month: "October 2024",
       title: "Website Assessment",
       description: "Portfolio website evaluation demonstrating project presentation and documentation capabilities.",
-      marks: "2%",
-      status: "completed"
+      marks: "",
+      status: "in progress"
+    },
+    {
+      month: "October 2024",
+      title: "Final Presentation & Viva",
+      description: "Final project presentation and individual viva voce assessment.",
+      marks: "",
+      status: "in progress"
     },
     {
       month: "November 2024",
       title: "Logbook & Status Documents",
       description: "Comprehensive project logbook and status documentation validation.",
-      marks: "3%",
-      status: "completed"
+      marks: "",
+      status: "in progress"
     },
     {
       month: "November 2024",
       title: "Final Report",
       description: "Complete final report including individual and group contributions with detailed analysis.",
-      marks: "19%",
-      status: "completed"
-    },
-    {
-      month: "November 2024",
-      title: "Final Presentation & Viva",
-      description: "Final project presentation and individual viva voce assessment.",
-      marks: "20%",
-      status: "completed"
+      marks: "",
+      status: "in progress"
     }
   ];
 
@@ -91,9 +91,21 @@ const Timeline = () => {
                     </div>
                     <h3 className="text-xl font-semibold text-[#54416d] mb-2">{milestone.title}</h3>
                     <p className="text-gray-600">{milestone.description}</p>
+
+                    {/* Status */}
                     <div className="mt-3 flex items-center">
-                      <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-                      <span className="text-sm text-green-600 font-medium">Completed</span>
+                      <div
+                        className={`w-3 h-3 rounded-full mr-2 ${
+                          milestone.status.toLowerCase() === "completed" ? "bg-green-500" : "bg-yellow-500"
+                        }`}
+                      ></div>
+                      <span
+                        className={`text-sm font-medium ${
+                          milestone.status.toLowerCase() === "completed" ? "text-green-600" : "text-yellow-600"
+                        }`}
+                      >
+                        {milestone.status.charAt(0).toUpperCase() + milestone.status.slice(1)}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -110,7 +122,7 @@ const Timeline = () => {
               <p className="text-gray-600">Major Milestones</p>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#75b4e3] mb-2">100%</div>
+              <div className="text-3xl font-bold text-[#75b4e3] mb-2">97%</div>
               <p className="text-gray-600">Completion Rate</p>
             </div>
             <div className="text-center">

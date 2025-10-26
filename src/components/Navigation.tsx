@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home');
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { id: 'home', label: 'Home' },
     { id: 'project-scope', label: 'Project Scope' },
     { id: 'objectives', label: 'Objectives' },
@@ -16,7 +16,7 @@ const Navigation = () => {
     { id: 'downloads', label: 'Downloads' },
     { id: 'achievements', label: 'Achievements' },
     { id: 'contact', label: 'Contact' },
-  ];
+  ], []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,14 +34,14 @@ const Navigation = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navItems]);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/25 backdrop-blur-md shadow-sm">
@@ -51,15 +51,16 @@ const Navigation = () => {
             <h1 className="text-xl font-bold text-[#54416d]">FloodForecast</h1>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 font-bold flex items-baseline space-x-4">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
+                  aria-label={`Navigate to ${item.label} section`}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative group ${
                     activeSection === item.id
                       ? 'text-[#54416d]'
-                      : 'text-gray-700 hover:text-[#54416d] '
+                      : 'text-gray-900 hover:text-[#332742] '
                   }`}
                 >
                   {item.label}
@@ -73,8 +74,11 @@ const Navigation = () => {
             </div>
           </div>
           <div className="md:hidden">
-            <button className="text-gray-700 hover:text-[#75b4e3]">
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button 
+              className="text-gray-700 hover:text-[#75b4e3]"
+              aria-label="Toggle navigation menu"
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>

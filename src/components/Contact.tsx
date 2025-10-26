@@ -111,8 +111,12 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#54416d] mb-1">Email</h4>
+                    <p className="text-gray-600">pradeep.a@sliit.lk</p>
+                    <p className="text-gray-600">narmada.g@sliit.lk</p>
                     <p className="text-gray-600">research.flood@university.edu</p>
-                    <p className="text-gray-600">team.floodforecast@gmail.com</p>
+                    <p className="text-gray-600">sandarukalhara09@gmail.com</p>
+                    <p className="text-gray-600">sandaligeethmadias@gmail.com</p>
+                    <p className="text-gray-600">sadeepasamaranayake.2@gmail.com</p>
                   </div>
                 </div>
 
@@ -125,9 +129,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#54416d] mb-1">Location</h4>
-                    <p className="text-gray-600">University Research Center</p>
-                    <p className="text-gray-600">Department of Water Resources</p>
-                    <p className="text-gray-600">City, State 12345</p>
+                    <p className="text-gray-600">Department of Information Technology</p>
+                    <p className="text-gray-600">Faculty of Computing</p>
+                    <p className="text-gray-600">Sri Lanka Institute of Information Technology</p>
+                    <p className="text-gray-600">Malabe, Sri Lanka</p>
                   </div>
                 </div>
 

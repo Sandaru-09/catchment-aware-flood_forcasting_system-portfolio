@@ -1,95 +1,52 @@
 'use client';
 
+type StatusType = "Submitted" | "In progress";
+
+interface Document {
+  title: string;
+  date: string;
+  type: string;
+  status: StatusType;
+  downloadUrl: string;
+}
+
+interface Presentation {
+  title: string;
+  date: string;
+  type: string;
+  status: StatusType;
+  downloadUrl: string;
+}
+
 const Downloads = () => {
-  const documents = [
-    {
-      title: "Topic Assessment",
-      date: "2024/02/25",
-      type: "Group",
-      status: "Submitted",
-      downloadUrl: "#"
-    },
-    {
-      title: "Project Charter", 
-      date: "2024/02/25",
-      type: "Group",
-      status: "Submitted",
-      downloadUrl: "#"
-    },
-    {
-      title: "Project Proposal",
-      date: "2024/03/22", 
-      type: "Individual",
-      status: "Submitted",
-      downloadUrl: "#"
-    },
-    {
-      title: "Status Documents I",
-      date: "2024/07/05",
-      type: "Individual", 
-      status: "Submitted",
-      downloadUrl: "#"
-    },
-    {
-      title: "Status Documents II",
-      date: "2024/09/15",
-      type: "Individual",
-      status: "Submitted", 
-      downloadUrl: "#"
-    },
-    {
-      title: "Research Paper",
-      date: "2024/07/30",
-      type: "Group",
-      status: "Submitted",
-      downloadUrl: "#"
-    },
-    {
-      title: "Final Report",
-      date: "2024/10/13",
-      type: "Group",
-      status: "Submitted",
-      downloadUrl: "#"
-    },
-    {
-      title: "Poster",
-      date: "2024/10/13", 
-      type: "Group",
-      status: "Submitted",
-      downloadUrl: "#"
-    }
+  const documents: Document[] = [
+    { title: "Topic Assessment", date: "2024/02/25", type: "Group", status: "Submitted", downloadUrl: "" },
+    { title: "Project Charter", date: "2024/02/25", type: "Group", status: "Submitted", downloadUrl: "" },
+    { title: "Project Proposal-Member 1", date: "2024/03/22", type: "Individual", status: "Submitted", downloadUrl: "" },
+    { title: "Project Proposal-Member 2", date: "2024/03/22", type: "Individual", status: "Submitted", downloadUrl: "" },
+    { title: "Project Proposal-Member 3", date: "2024/03/22", type: "Individual", status: "Submitted", downloadUrl: "/pdfs/Proposal-Report-25_60-IT21305214.pdf" },
+    { title: "Project Proposal-Member 4", date: "2024/03/22", type: "Individual", status: "Submitted", downloadUrl: "" },
+    { title: "Research Paper", date: "2024/07/30", type: "Group", status: "Submitted", downloadUrl: "/pdfs/researchpaper_060.pdf" },
+    { title: "Final Report", date: "2024/11/13", type: "Group", status: "In progress", downloadUrl: "" },
+    { title: "Poster", date: "2024/11/13", type: "Group", status: "In progress", downloadUrl: "" },
   ];
 
-  const presentations = [
-    {
-      title: "Project Proposal",
-      date: "2024/03/14",
-      type: "Group",
-      status: "Submitted",
-      downloadUrl: "#"
-    },
-    {
-      title: "Progress Presentation I",
-      date: "2024/07/08",
-      type: "Group", 
-      status: "Submitted",
-      downloadUrl: "#"
-    },
-    {
-      title: "Progress Presentation II",
-      date: "2024/10/18",
-      type: "Group",
-      status: "Submitted",
-      downloadUrl: "#"
-    },
-    {
-      title: "Final Presentation",
-      date: "2024/11/15",
-      type: "Group",
-      status: "Submitted",
-      downloadUrl: "#"
-    }
+  const presentations: Presentation[] = [
+    { title: "Project Proposal", date: "2024/03/14", type: "Group", status: "Submitted", downloadUrl: "/pdfs/ResearchProposal.pptx.pdf" },
+    { title: "Progress Presentation I", date: "2024/07/08", type: "Group", status: "Submitted", downloadUrl: "/pdfs/PP1Updated.pdf" },
+    { title: "Progress Presentation II", date: "2024/10/18", type: "Group", status: "Submitted", downloadUrl: "" },
+    { title: "Final Presentation", date: "2024/11/15", type: "Group", status: "In progress", downloadUrl: "" },
   ];
+
+  const renderStatus = (status: StatusType) => (
+    <span
+      className={`text-sm font-medium ${
+        status === "Submitted" ? "text-green-600" : "text-yellow-600"
+      }`}
+    >
+      {status === "Submitted" ? "Submitted" : "In Progress"}
+    </span>
+  );
 
   return (
     <section id="downloads" className="py-20 bg-gray-50">
@@ -112,16 +69,22 @@ const Downloads = () => {
                     <h4 className="font-semibold text-[#54416d]">{doc.title}</h4>
                     <div className="flex items-center space-x-4 text-sm text-gray-600">
                       <span>Submitted: {doc.date}</span>
-                      <span className="px-2 py-1 bg-[#75b4e3]/20 text-[#75b4e3] rounded-full text-xs">
-                        {doc.type}
-                      </span>
+                      <span className="px-2 py-1 bg-[#75b4e3]/20 text-[#75b4e3] rounded-full text-xs">{doc.type}</span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <span className="text-green-600 text-sm font-medium">{doc.status}</span>
-                    <button className="px-4 py-2 bg-[#75b4e3] text-white rounded-lg hover:bg-[#54416d] transition-colors text-sm">
-                      Download
-                    </button>
+                    {renderStatus(doc.status)}
+                    {doc.status === "Submitted" && (
+                      <a
+                        href={doc.downloadUrl || "#"}
+                        download={!!doc.downloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-[#75b4e3] text-white rounded-lg hover:bg-[#54416d] transition-colors text-sm"
+                      >
+                        Download
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
@@ -138,16 +101,22 @@ const Downloads = () => {
                     <h4 className="font-semibold text-[#54416d]">{pres.title}</h4>
                     <div className="flex items-center space-x-4 text-sm text-gray-600">
                       <span>Submitted: {pres.date}</span>
-                      <span className="px-2 py-1 bg-[#54416d]/20 text-[#54416d] rounded-full text-xs">
-                        {pres.type}
-                      </span>
+                      <span className="px-2 py-1 bg-[#54416d]/20 text-[#54416d] rounded-full text-xs">{pres.type}</span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <span className="text-green-600 text-sm font-medium">{pres.status}</span>
-                    <button className="px-4 py-2 bg-[#54416d] text-white rounded-lg hover:bg-[#75b4e3] transition-colors text-sm">
-                      Download
-                    </button>
+                    {renderStatus(pres.status)}
+                    {pres.status === "Submitted" && (
+                      <a
+                        href={pres.downloadUrl || "#"}
+                        download={!!pres.downloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-[#54416d] text-white rounded-lg hover:bg-[#75b4e3] transition-colors text-sm"
+                      >
+                        Download
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
@@ -159,11 +128,11 @@ const Downloads = () => {
           <h3 className="text-2xl font-semibold mb-6 text-center">Research Outputs</h3>
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">8</div>
+              <div className="text-3xl font-bold mb-2">{documents.length}</div>
               <p className="text-blue-100">Documents</p>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">4</div>
+              <div className="text-3xl font-bold mb-2">{presentations.length}</div>
               <p className="text-blue-100">Presentations</p>
             </div>
             <div className="text-center">
