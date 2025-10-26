@@ -7,7 +7,7 @@ import Technologies from '@/components/Technologies';
 import Timeline from '@/components/Timeline';
 import Team from '@/components/Team';
 import Downloads from '@/components/Downloads';
-import Achievements from '@/components/Achievements';
+
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -24,7 +24,7 @@ export default function Home() {
         <Timeline />
         <Team />
         <Downloads />
-        <Achievements />
+     
         <Contact />
       </main>
       <Footer />

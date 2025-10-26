@@ -60,7 +60,7 @@ const Methodology = () => {
 
         <div className="bg-white rounded-lg p-8 shadow-lg">
           <h3 className="text-2xl font-semibold text-[#54416d] mb-6 text-center">System Architecture</h3>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <div>
               <h4 className="text-lg font-semibold text-[#75b4e3] mb-3">Data Layer</h4>
               <ul className="text-gray-600 space-y-2">

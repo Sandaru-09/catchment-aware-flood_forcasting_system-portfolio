@@ -1,36 +1,44 @@
 'use client';
 
+import { FaWater, FaMapMarkedAlt, FaExclamationTriangle, FaUsers, FaChartLine, FaBolt } from 'react-icons/fa';
+
 const Objectives = () => {
   const objectives = [
     {
       title: "Real-time Flood Prediction",
       description: "Develop machine learning models that can predict flood events in real-time using meteorological data, catchment characteristics, and historical patterns.",
-      icon: "🌊"
+      icon: FaWater,
+      color: "#4285F4"
     },
     {
       title: "Catchment-Specific Modeling",
       description: "Create adaptive models that account for unique catchment characteristics including topography, soil type, vegetation, and drainage patterns.",
-      icon: "🗺️"
+      icon: FaMapMarkedAlt,
+      color: "#0F9D58"
     },
     {
       title: "Early Warning System",
       description: "Implement an intelligent early warning system that provides timely alerts to communities and emergency services with appropriate lead times.",
-      icon: "⚠️"
+      icon: FaExclamationTriangle,
+      color: "#F4B400"
     },
     {
       title: "Community Engagement Platform",
       description: "Build user-friendly web and mobile interfaces that enable community participation in flood monitoring and response coordination.",
-      icon: "👥"
+      icon: FaUsers,
+      color: "#DB4437"
     },
     {
       title: "Data Integration Framework",
       description: "Integrate multiple data sources including weather stations, satellite imagery, IoT sensors, and crowd-sourced information.",
-      icon: "📊"
+      icon: FaChartLine,
+      color: "#6C5CE7"
     },
     {
       title: "Performance Optimization",
       description: "Optimize prediction accuracy and system performance through continuous learning and model refinement based on real-world feedback.",
-      icon: "⚡"
+      icon: FaBolt,
+      color: "#FFA502"
     }
   ];
 
@@ -45,13 +53,18 @@ const Objectives = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {objectives.map((objective, index) => (
-            <div key={index} className="bg-gradient-to-br from-[#75b4e3]/10 to-[#54416d]/10 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">{objective.icon}</div>
-              <h3 className="text-xl font-semibold text-[#54416d] mb-3">{objective.title}</h3>
-              <p className="text-gray-600">{objective.description}</p>
-            </div>
-          ))}
+          {objectives.map((objective, index) => {
+            const IconComponent = objective.icon;
+            return (
+              <div key={index} className="bg-gradient-to-br from-[#75b4e3]/10 to-[#54416d]/10 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div className="text-4xl mb-4">
+                  <IconComponent style={{ color: objective.color }} />
+                </div>
+                <h3 className="text-xl font-semibold text-[#54416d] mb-3">{objective.title}</h3>
+                <p className="text-gray-600">{objective.description}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
